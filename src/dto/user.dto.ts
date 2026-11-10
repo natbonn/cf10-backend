@@ -1,29 +1,26 @@
-import {IPhone} from '../models/user.model'
+import { Types } from 'mongoose';
+import { IRoleDTO } from './role.dto';
 
-import { IRole } from "../models/role.model";
-
-export interface IPhoneDTO{
+export interface IPhoneDTO {
     type: string;
     number: string;
 };
 
 export interface UserResponseDTO {
-    id?: string;
+    _id: Types.ObjectId;
     username: string;
-    firstname: string;
-    lastname: string;
+    firstname?: string;
+    lastname?: string;
     email: string;
-    address: {
-        area: string;
-        street: string;
-        number: string;
-        po: string;
-        municipality: string;
+    address?: {
+        area?: string;
+        street?: string;
+        number?: string;
+        po?: string;
+        municipality?: string;
     },
-    phone: IPhoneDTO[];
-    // phone: Iphone[];
-    roles: string[];
-    // roles: IRole;
+    phone?: IPhoneDTO[];
+    roles: IRoleDTO[];
 }
 
 export interface CreateUserDTO {
@@ -31,7 +28,23 @@ export interface CreateUserDTO {
     password: string;
     firstname?: string;
     lastname?: string;
-    email: string,
+    email: string;
+    address?: {
+        area?: string;
+        street?: string;
+        number?: string;
+        po?: string;
+        municipality?: string
+    },
+    phone?: IPhoneDTO[];
+    roles?: string[]
+}
+
+export interface UpdateUserDTO {
+    password?: string;
+    firstname?: string;
+    lastname?: string;
+    email?: string;
     address?: {
         area?: string;
         street?: string;

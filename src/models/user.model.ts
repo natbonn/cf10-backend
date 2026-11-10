@@ -32,16 +32,14 @@ const UserSchema = new Schema<IUser>({
         type: String, 
         required: true, 
         unique: true, 
-        max: 20,
-        min: 6,
+        maxLength: 20,
+        minLength: 6,
         trim: true, 
         lowercase: true
     },
     password: {
         type: String, 
-        required: [true, 'Password is required field'],
-        max: 20,
-        min: 6
+        required: [true, 'Password is required field']
     },
     firstname: String,
     lastname: String,
