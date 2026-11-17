@@ -2,10 +2,10 @@ import User from '../models/user.model';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
-import { AuthPayload } from '../models/auth.model';
 import { IRoleDTO } from '../dto/role.dto';
 import Role from '../models/role.model';
 import { verifyGoogleIdToken } from '../utils/googleVerify';
+import { AuthPayloadDTO } from '../dto/auth.dto';
 
 dotenv.config();
 
@@ -20,7 +20,7 @@ export const login = async (username: string, password: string) => {
     const match = await bcrypt.compare(password, user.password);
     if (!match) return null;
 
-    const payload: AuthPayload = {
+    const payload: AuthPayloadDTO = {
         username: user.username,
         email: user.email,
         roles: user.roles
