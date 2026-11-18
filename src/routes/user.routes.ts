@@ -47,6 +47,8 @@ router.get('/email/:email',validateEmail(), userCtrl.getOneByEmail)
  *  post:
  *    summary: Creates a new user
  *    tags: ["Users"]
+ *    security: 
+ *      - bearerAuth: []
  *    requestBody:
  *      required: true
  *      content:
@@ -67,6 +69,42 @@ router.get('/email/:email',validateEmail(), userCtrl.getOneByEmail)
  *        description: User created
  */
 router.post('/', authenticate, hasAdminRole, validate(createUserSchema), userCtrl.create);
+
+/**
+ * @opeapi
+ * /users/{username}:
+ *  put:
+ *    summary: Update User
+ *    tags: [Users]
+ *    security: 
+ *      - bearerAuth: []
+ *    parameters:
+ *      - in: path
+ *        name: username
+ *        required: true
+ *        schema:
+ *          type: string
+ *    requestBody:
+ *      requried: true
+ *      content:
+ *        application/json:
+ *        schema:
+ *          type: object
+ *          properties:
+ *            username:
+ *              type: string
+ *            password:
+ *              type: string
+ *            firstname:
+ *              type: string
+ *            lastname:
+ *              type: string
+ *            email:
+ *              type: string
+ *    responses:
+ *      200:
+ *        description: user updated
+ */
 router.put('/:username', validate(updateUserSchema), userCtrl.update);
 router.delete('/:username', userCtrl.remove);
 export default router;
