@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from "express";
 import jwt, { JwtPayload } from 'jsonwebtoken';
 
 import dotenv from 'dotenv';
@@ -9,7 +9,7 @@ const JWT_SECRET = process.env.JWT_SECRET || '';
 export const authenticate = (req: Request, res: Response, next: NextFunction) => {
     const header = req.headers.authorization;
     if (!header || !header.startsWith('Bearer ')) {
-        res.status(401).json({message: "Missing or Invalid Authorization Header"});
+        res.status(401).json({ message: "Missing or Invalid Authorization header" });
         return;
     }
 
@@ -23,6 +23,6 @@ export const authenticate = (req: Request, res: Response, next: NextFunction) =>
         // req.user = payload
         next();
     } catch (err) {
-        res.status(401).json({message: "Invalid or expired token"});
+        res.status(401).json({ message: "Invalid or expired token" });
     }
 }
