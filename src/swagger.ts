@@ -19,7 +19,7 @@ const options: swaggerJSDoc.Options = {
                 description: "Local Server"
             },
             {
-                url: "https://xxxxxx.xxx.com",
+                url: "https://cf10-backend-2pcx.onrender.com/api",
                 description: "Render Server"
             }
         ],

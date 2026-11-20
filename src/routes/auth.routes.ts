@@ -3,32 +3,32 @@ import * as authCtrl from '../controllers/auth.controller';
 import { loginSchema } from '../validators/auth.validator';
 import { validate } from '../middlewares/validate.middleware';
 
-const router = Router();
+const router = Router()
 
 /**
  * @openapi
- * /auth.login:
+ * /auth/login:
  *  post:
  *    summary: User Login
  *    tags: [Auth]
- *    reguestBody:
+ *    requestBody:
  *      required: true
- *      content:
+ *      content: 
  *        application/json:
  *          schema:
  *            type: object
  *            properties:
- *              username:
- *                  type: string
- *              password:
- *                  type: string
+ *               username:
+ *                 type: string
+ *               password: 
+ *                 type: string
  *    responses:
- *      200:
+ *      200: 
  *        description: Login Succesfull, returns JWT
  *      401:
- *        description: Wrong Credentials   
+ *        description: Wrong Credentials  
  */
 router.post('/login', validate(loginSchema), authCtrl.login);
 
 router.post('/google-auth', authCtrl.googleLogin);
-export default router;
+export default router

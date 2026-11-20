@@ -9,5 +9,7 @@ app.use(express.json());
 setupSwagger(app);
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
+// app.use('/api/roles', rolesRoutes);
+
 
 export default app;
